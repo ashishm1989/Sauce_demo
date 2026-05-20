@@ -1,0 +1,9 @@
+username,password,expectedResult,description
+standard_user,secret_sauce,success,Valid user - standard
+problem_user,secret_sauce,success,Valid user - problem user
+performance_glitch_user,secret_sauce,success,Valid user - performance glitch user
+locked_out_user,secret_sauce,failure,Locked out user - should fail
+standard_user,wrong_password,failure,Invalid password - should fail
+invalid_user,secret_sauce,failure,Invalid username - should fail
+,secret_sauce,failure,Empty username - should fail
+standard_user,,failure,Empty password - should fail
