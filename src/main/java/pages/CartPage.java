@@ -35,8 +35,9 @@ public class CartPage extends BasePage {
 
     /** True when the cart page URL is active. */
     public boolean isLoaded() {
-        try {
+    	try {
             WaitUtils.waitForVisible(pageTitle);
+            WaitUtils.waitForUrlContains("cart.html");
             return getCurrentUrl().contains("cart.html");
         } catch (Exception e) {
             return false;
@@ -67,9 +68,12 @@ public class CartPage extends BasePage {
 
     /** Proceeds to checkout. */
     public CheckoutPage proceedToCheckout() {
+    	WaitUtils.waitForVisible(checkoutButton);
+        WaitUtils.waitForClickable(checkoutButton);
         click(checkoutButton);
         log.info("Clicked Checkout button.");
         return new CheckoutPage();
+
     }
 
     /** Returns to the inventory page without checking out. */
