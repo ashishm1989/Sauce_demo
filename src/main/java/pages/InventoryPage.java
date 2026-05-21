@@ -85,7 +85,7 @@ public class InventoryPage extends BasePage {
      * @throws RuntimeException if no product with that name is found
      */
     public InventoryPage addProductToCart(String productName) {
-        WebElement addButton = inventoryItems.stream()
+    	WebElement addButton = inventoryItems.stream()
                 .filter(item -> item.findElement(By.className("inventory_item_name"))
                         .getText().equalsIgnoreCase(productName))
                 .findFirst()
@@ -93,6 +93,7 @@ public class InventoryPage extends BasePage {
                 .findElement(By.cssSelector("button[data-test^='add-to-cart']"));
 
         click(addButton);
+        WaitUtils.waitForVisible(cartBadge);
         log.info("Added product to cart: {}", productName);
         return this;
     }
@@ -122,10 +123,12 @@ public class InventoryPage extends BasePage {
 
     /** Opens the hamburger menu, then clicks Logout. */
     public LoginPage logout() {
-        click(hamburgerMenu);
-        WaitUtils.waitForVisible(logoutLink);
-        click(logoutLink);
-        log.info("Logged out.");
-        return new LoginPage();
+    	 {
+    	    click(hamburgerMenu);
+    	    WaitUtils.waitForClickable(logoutLink);
+    	    click(logoutLink);
+    	    log.info("Logged out.");
+    	    return new LoginPage();
+    	}
     }
 }

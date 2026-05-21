@@ -60,7 +60,8 @@ public class CheckoutPage extends BasePage {
     }
 
     public boolean isStepTwoLoaded() {
-        try {
+    	try {
+            WaitUtils.waitForUrlContains("checkout-step-two");
             WaitUtils.waitForVisible(finishButton);
             return getCurrentUrl().contains("checkout-step-two");
         } catch (Exception e) {
@@ -69,7 +70,8 @@ public class CheckoutPage extends BasePage {
     }
 
     public boolean isErrorDisplayed() {
-        try {
+    	try {
+            WaitUtils.waitForVisible(errorMessage);
             return errorMessage.isDisplayed();
         } catch (Exception e) {
             return false;
