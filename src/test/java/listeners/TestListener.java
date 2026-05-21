@@ -17,10 +17,6 @@ public class TestListener implements ITestListener, ISuiteListener {
     private static final Logger log = LoggerFactory.getLogger(TestListener.class);
     private static final ConfigReader config = ConfigReader.getInstance();
 
-    /* ------------------------------------------------------------------ */
-    /*  ITestListener                                                       */
-    /* ------------------------------------------------------------------ */
-
     @Override
     public void onTestStart(ITestResult result) {
         log.info("▶  START  : {}.{}",
@@ -66,10 +62,7 @@ public class TestListener implements ITestListener, ISuiteListener {
         log.warn("~  WITHIN_SUCCESS_PCT : {}", result.getName());
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  ISuiteListener                                                      */
-    /* ------------------------------------------------------------------ */
-
+   
     @Override
     public void onStart(ISuite suite) {
         log.info("═══════════════════════════════════════════");
@@ -88,9 +81,7 @@ public class TestListener implements ITestListener, ISuiteListener {
         log.info("═══════════════════════════════════════════");
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Helpers                                                             */
-    /* ------------------------------------------------------------------ */
+    
 
     private long duration(ITestResult r) {
         return r.getEndMillis() - r.getStartMillis();

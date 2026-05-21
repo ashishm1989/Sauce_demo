@@ -29,9 +29,7 @@ public class InventoryTest {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    /**
-     * Check if inventory page loaded
-     */
+    
     public boolean isLoaded() {
         try {
             WebElement title = wait.until(
@@ -43,16 +41,12 @@ public class InventoryTest {
         }
     }
 
-    /**
-     * Get heading
-     */
+    
     public String getPageHeading() {
         return driver.findElement(pageTitle).getText().trim();
     }
 
-    /**
-     * Get all product names
-     */
+    
     public List<String> getAllProductNames() {
         return driver.findElements(inventoryItems)
                 .stream()
@@ -60,9 +54,7 @@ public class InventoryTest {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Add product to cart
-     */
+    
     public InventoryTest addProductToCart(String productName) {
         List<WebElement> products = driver.findElements(By.className("inventory_item"));
 
@@ -76,9 +68,7 @@ public class InventoryTest {
         return this;
     }
 
-    /**
-     * Remove product from cart
-     */
+    
     public InventoryTest removeProductFromCart(String productName) {
         List<WebElement> products = driver.findElements(By.className("inventory_item"));
 
@@ -91,9 +81,7 @@ public class InventoryTest {
         return this;
     }
 
-    /**
-     * Get cart badge count
-     */
+    
     public int getCartItemCount() {
         List<WebElement> badges = driver.findElements(cartBadge);
 
@@ -104,9 +92,7 @@ public class InventoryTest {
         return Integer.parseInt(badges.get(0).getText().trim());
     }
 
-    /**
-     * Logout
-     */
+   
     public LoginTest logout() {
         wait.until(ExpectedConditions.elementToBeClickable(menuButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(logoutLink)).click();
@@ -116,9 +102,7 @@ public class InventoryTest {
         return new LoginTest();
     }
 
-    /**
-     * Open cart
-     */
+    
     public CartTest openCart() {
         wait.until(ExpectedConditions.elementToBeClickable(cartLink)).click();
         wait.until(ExpectedConditions.urlContains("cart.html"));

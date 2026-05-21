@@ -5,16 +5,10 @@ import org.testng.annotations.Test;
 import pages.InventoryPage;
 import pages.LoginPage;
 
-/**
- * LoginTest — validates the login page behaviour.
- *
- * Groups: smoke
- */
+
 public class LoginTest extends BaseTest {
 
-    /* ------------------------------------------------------------------ */
-    /*  Positive tests                                                      */
-    /* ------------------------------------------------------------------ */
+   
 
     @Test(
         groups     = {"smoke"},
@@ -42,9 +36,7 @@ public class LoginTest extends BaseTest {
                 "Login page should be displayed.");
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Negative tests                                                      */
-    /* ------------------------------------------------------------------ */
+    
 
     @Test(
         groups     = {"smoke"},
@@ -98,10 +90,7 @@ public class LoginTest extends BaseTest {
                 "Error banner should appear for empty password.");
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Session / logout tests                                              */
-    /* ------------------------------------------------------------------ */
-
+    
     @Test(
         groups     = {"smoke"},
         description = "User should be able to logout and return to login page"

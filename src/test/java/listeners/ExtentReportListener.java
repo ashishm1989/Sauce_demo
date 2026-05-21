@@ -13,27 +13,19 @@ import utils.ConfigReader;
 
 import java.io.File;
 
-/**
- * ExtentReportListener — builds an interactive HTML test report using
- * ExtentReports (Spark reporter).
- *
- * Each test method gets its own node; failures automatically embed the
- * screenshot captured by {@link TestListener}.
- */
+
 public class ExtentReportListener implements ITestListener, ISuiteListener {
 
     private static final Logger log = LoggerFactory.getLogger(ExtentReportListener.class);
     private static final ConfigReader config = ConfigReader.getInstance();
 
-    /** One ExtentReports instance shared for the entire suite. */
+    
     private static ExtentReports extent;
 
-    /** Thread-local so parallel tests each write to their own node. */
+    
     private static final ThreadLocal<ExtentTest> testNode = new ThreadLocal<>();
 
-    /* ------------------------------------------------------------------ */
-    /*  Suite start / finish                                                */
-    /* ------------------------------------------------------------------ */
+    
 
     @Override
     public void onStart(ISuite suite) {
@@ -67,9 +59,7 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
         }
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  ITestListener                                                        */
-    /* ------------------------------------------------------------------ */
+    
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -77,7 +67,6 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
                 + " → " + result.getName();
         ExtentTest test = extent.createTest(fullName);
 
-        // Tag with TestNG groups
         if (result.getMethod().getGroups() != null) {
             for (String group : result.getMethod().getGroups()) {
                 test.assignCategory(group);
@@ -118,10 +107,7 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
         }
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Helper                                                              */
-    /* ------------------------------------------------------------------ */
-
+  
     private ExtentTest getCurrentTest() {
         return testNode.get();
     }

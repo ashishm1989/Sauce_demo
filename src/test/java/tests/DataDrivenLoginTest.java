@@ -7,35 +7,15 @@ import pages.InventoryPage;
 import pages.LoginPage;
 import utils.CsvDataProvider;
 
-/**
- * DataDrivenLoginTest — exercises the login form with multiple credential
- * combinations loaded from {@code testdata/login_data.csv}.
- *
- * CSV columns: username, password, expectedResult, description
- *   expectedResult = "success" → user lands on inventory
- *   expectedResult = "failure" → error banner should appear
- *
- * Groups: datadriven
- */
+
 public class DataDrivenLoginTest extends BaseTest {
 
-    /* ------------------------------------------------------------------ */
-    /*  DataProvider                                                        */
-    /* ------------------------------------------------------------------ */
-
-    /**
-     * Reads login test data from the CSV file.
-     *
-     * @return 2D array where each row is {username, password, expectedResult, description}
-     */
+    
     @DataProvider(name = "loginData", parallel = false)
     public Object[][] loginDataProvider() {
         return CsvDataProvider.loadCsv("testdata/login_data.csv");
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Test                                                                */
-    /* ------------------------------------------------------------------ */
 
     @Test(
         dataProvider = "loginData",
@@ -54,7 +34,7 @@ public class DataDrivenLoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage().open();
 
         if ("success".equalsIgnoreCase(expectedResult)) {
-            // ── Positive path ────────────────────────────────────────────
+            // Positive path 
             InventoryPage inventoryPage = loginPage.loginAs(username, password);
 
             Assert.assertTrue(inventoryPage.isLoaded(),
@@ -62,7 +42,7 @@ public class DataDrivenLoginTest extends BaseTest {
                                   + "but inventory page did not load.", description, username));
 
         } else {
-            // ── Negative path ────────────────────────────────────────────
+            // Negative path
             loginPage.loginAs(username, password);
 
             Assert.assertTrue(loginPage.isErrorDisplayed(),

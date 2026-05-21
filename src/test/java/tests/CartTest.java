@@ -8,16 +8,12 @@ import pages.LoginPage;
 
 import java.util.List;
 
-/**
- * CartTest — validates cart behaviour: item presence, removal, persistence.
- *
- * Groups: cart
- */
+
 public class CartTest extends BaseTest {
 
     @Test(
         groups     = {"cart"},
-        description = "Products added on inventory page should appear in the cart"
+        description = "Products added on inventory page should appear in cart"
     )
     public void addedProductsShouldAppearInCart() {
         List<String> productsToAdd = config.getProductsToAdd();

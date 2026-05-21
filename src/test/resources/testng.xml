@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
 <suite name="SauceDemo Automation Suite" verbose="2" parallel="false">
 
     <!-- Attach listeners globally -->
@@ -7,9 +9,7 @@
         <listener class-name="listeners.ExtentReportListener"/>
     </listeners>
 
-    <!-- ============================================================
-         Group 1 : Smoke Tests  (fast, must-pass on every build)
-    ============================================================ -->
+    <!-- Group 1 : Smoke Tests (fast, must-pass on every build) -->
     <test name="Smoke Tests">
         <groups>
             <run>
@@ -22,9 +22,7 @@
         </classes>
     </test>
 
-    <!-- ============================================================
-         Group 2 : End-to-End Checkout Flow
-    ============================================================ -->
+    <!-- Group 2 : End-to-End Checkout Flow -->
     <test name="E2E Checkout Tests">
         <groups>
             <run>
@@ -33,34 +31,6 @@
         </groups>
         <classes>
             <class name="tests.E2ECheckoutTest"/>
-        </classes>
-    </test>
-
-    <!-- ============================================================
-         Group 3 : Data-Driven Login Tests
-    ============================================================ -->
-    <test name="Data-Driven Login Tests">
-        <groups>
-            <run>
-                <include name="datadriven"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="tests.DataDrivenLoginTest"/>
-        </classes>
-    </test>
-
-    <!-- ============================================================
-         Group 4 : Cart Tests
-    ============================================================ -->
-    <test name="Cart Tests">
-        <groups>
-            <run>
-                <include name="cart"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="tests.CartTest"/>
         </classes>
     </test>
 

@@ -6,21 +6,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.ConfigReader;
 
-/**
- * RetryAnalyzer — automatically retries failed tests up to a configurable
- * maximum number of times.
- *
- * Usage: annotate a test method (or the whole class) with:
- * {@code @Test(retryAnalyzer = RetryAnalyzer.class)}
- *
- * Or let {@link RetryTransformer} inject it globally for every test.
- */
+ //RetryAnalyzer — automatically retries failed tests up to a configurable
+ //maximum number of times.
+ 
+ 
 public class RetryAnalyzer implements IRetryAnalyzer {
 
     private static final Logger log = LoggerFactory.getLogger(RetryAnalyzer.class);
     private static final int MAX_RETRIES = ConfigReader.getInstance().getRetryCount();
 
-    /** Per-instance counter so each test has its own retry count. */
+    
     private int retryCount = 0;
 
     @Override
