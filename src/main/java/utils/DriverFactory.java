@@ -63,7 +63,7 @@ public class DriverFactory {
 
             case "chrome":
             default:
-                WebDriverManager.chromedriver().setup();
+            	WebDriverManager.chromedriver().browserVersion("148").setup();
                 ChromeOptions chromeOpts = buildChromeOptions(headless);
                 driver = new ChromeDriver(chromeOpts);
                 break;

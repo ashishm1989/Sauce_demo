@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SauceDemo UI Automation Framework
 
 A UI test automation framework for [saucedemo.com](https://www.saucedemo.com) built with Selenium WebDriver 4, TestNG, Java 11, and ExtentReports.
@@ -124,3 +125,7 @@ mvn clean test -Dheadless=true
 ## Test Reports
 
 After a test run, open `reports/ExtentReport.html` in a browser. It shows pass/fail/skip counts, per-test logs, and embedded screenshots for failures. Full logs are written to `reports/automation.log`.
+=======
+# Sauce_demo
+Sauce_demo_UI_Automation Framework
+>>>>>>> 2daf2f0317b5a961cf4f6c6ea3c466017bb0b201
